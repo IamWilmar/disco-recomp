@@ -72,7 +72,7 @@ bool is_license_requirement(const ErrorCode& code) {
 // Ninguno de los dos applets existe aquí: el código va al log y se vuelve como si el usuario lo hubiera cerrado.
 void show(const ErrorCode& code) {
     printf("[err] applet de error: %04u-%04u%s\n", code.category, code.number,
-           is_license_requirement(code) ? " (en la consola, el aviso de Nintendo Switch Online)" : "");
+           is_license_requirement(code) ? " (en la consola, el aviso de suscripción al servicio en línea)" : "");
 }
 
 }  // namespace

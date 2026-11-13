@@ -12,7 +12,7 @@ own ARM64 code runs directly on the device's CPU, while this project reimplement
 
 ## Status
 
-**Version 0.5 — playable, still in progress.** Interiors and the outdoor city render correctly at 30 fps, with sound,
+**Version 0.6 — playable, still in progress.** Interiors and the outdoor city render correctly at 30 fps, with sound,
 voice acting and videos.
 
 - Outdoors the GPU is close to its limit; optimisation is still pending.
@@ -70,15 +70,26 @@ about the app itself are always welcome in the issues; just please don't share o
 Saves, the shader cache and `log.txt` are written into that same folder. The first time you visit each place the game
 may stutter while its shaders are translated and compiled; they are cached for the next time.
 
+## Controls and the settings panel
+
+- **The face buttons follow the device's controller mode.** In both of the Retroid's modes (Xbox and Retro) every button
+  does what the button in that same place does on the game's original console: B at the bottom, A on the right, X on top,
+  Y on the left. You can change the mode from the quick settings while the game is running. Any other controller is read
+  by position too.
+- **Settings panel.** Swipe in from the right edge of the screen (the system's back gesture, the one that shows an arrow)
+  and a panel slides out over the game. For now it has one switch, the FPS counter, and your choice is remembered. The
+  same swipe, a tap outside the panel or a few seconds without touching it hide it again.
+
 ## Options
 
-Creating an empty file (or folder) with one of these names in the game folder changes how the port runs. They are read
+Creating an empty file (or folder) with one of these names in the game folder changes how the port runs. Most are read
 at start-up.
 
 | Name | Effect |
 |---|---|
 | `lsfg/` | Frame generation (Lossless Scaling's LSFG) to show ~60 fps. Needs **your own** `Lossless.dll` from the Windows app *Lossless Scaling* (sold on Steam), copied into that `lsfg` folder or to `Download/Lossless.dll`. Not included here. |
-| `botones_xbox` | Maps the face buttons by position (Xbox layout) instead of by name (the console's layout). |
+| `sin_fps` | Hides the FPS counter (the same switch as in the settings panel). |
+| `botones_xbox`, `botones_retro` | Force the face buttons to be read by position (`botones_xbox`) or by name (`botones_retro`) if a controller comes out swapped. |
 | `registro` | Verbose log (line by line) plus a watchdog that prints the game's stack if it hangs. Slower: for debugging. |
 
 ## How it works
@@ -143,6 +154,9 @@ CPU y este proyecto reimplementa el SDK de la consola y la API gráfica NVN sobr
 - Hecho exclusivamente para la Retroid Pocket 5 y la Retroid Pocket Flip 2 (Snapdragon 865, Adreno 650): todo está
   ajustado a ese chip y a sus límites (30 fps fijos con presupuesto de 33 ms por frame, ~2,7 GB de memoria libre, núcleos
   grandes para el juego). Probado en la Flip 2.
+- Los botones quedan donde están en la consola original del juego en los dos modos del mando de la Retroid (Xbox y
+  Retro). Deslizando un dedo desde el borde derecho de la pantalla sale un panel de ajustes; por ahora tiene el
+  interruptor del contador de FPS.
 - Proyecto de fans, gratis (las donaciones son opcionales y no desbloquean nada), sin relación con el fabricante de la consola ni
   con ZA/UM.
 - Si quieres apoyar el trabajo: [ko-fi.com/iamwilmar](https://ko-fi.com/iamwilmar). Es opcional y no desbloquea nada: todas las versiones son gratis e iguales para todos.
